@@ -1,0 +1,118 @@
+Retrieve all technology stacks.
+sql
+SELECT * FROM Technology_Stack;
+
+Retrieve all brands.
+sql
+SELECT * FROM Brand;
+
+Retrieve all mobile phones.
+SELECT * FROM Mobile_Phone;
+
+Retrieve all features.
+sql
+SELECT * FROM Features;
+
+Retrieve the model of a specific mobile phone.
+sql
+SELECT Model FROM Mobile_Phone WHERE Phone_ID = <phone_id>;
+
+Retrieve the brand details of a specific mobile phone.
+sql
+SELECT * FROM Brand WHERE Brand_ID IN (SELECT Brand_ID FROM Mobile_Phone WHERE Phone_ID = <phone_id>);
+
+Retrieve the technology stack details of a specific mobile phone.
+sql
+SELECT * FROM Technology_Stack WHERE Stack_ID IN (SELECT Stack_ID FROM Mobile_Phone WHERE Phone_ID = <phone_id>);
+
+Retrieve all mobile phones released after a certain date.
+sql
+SELECT * FROM Mobile_Phone WHERE Release_Date > 'YYYY-MM-DD';
+
+Retrieve the total number of mobile phones.
+sql
+SELECT COUNT(*) FROM Mobile_Phone;
+
+Retrieve the average price of all mobile phones.
+sql
+SELECT AVG(Price) FROM Mobile_Phone;
+
+Retrieve the brand with the highest number of mobile phones.
+sql
+SELECT Brand_ID, COUNT(*) AS Total_Phones FROM Mobile_Phone GROUP BY Brand_ID ORDER BY Total_Phones DESC LIMIT 1;
+
+Retrieve the technology stack with the highest RAM.
+sql
+SELECT * FROM Technology_Stack ORDER BY RAM DESC LIMIT 1;
+
+Retrieve the total number of features for a specific mobile phone.
+sql
+SELECT COUNT(*) FROM Mobile_Phone_Features WHERE Phone_ID = <phone_id>;
+
+Retrieve the features of a specific mobile phone.
+sql
+SELECT * FROM Features WHERE Feature_ID IN (SELECT Feature_ID FROM Mobile_Phone_Features WHERE Phone_ID = <phone_id>);
+
+Retrieve all mobile phones with a specific feature.
+sql
+SELECT * FROM Mobile_Phone WHERE Phone_ID IN (SELECT Phone_ID FROM Mobile_Phone_Features WHERE Feature_ID = <feature_id>);
+
+Retrieve the average battery capacity of mobile phones released in a specific year.
+sql
+SELECT AVG(Battery_Capacity) FROM Technology_Stack WHERE Stack_ID IN (SELECT Stack_ID FROM Mobile_Phone WHERE YEAR(Release_Date) = <year>);
+
+Retrieve the brand names and the number of mobile phones they have.
+sql
+SELECT b.Brand_Name, COUNT(*) AS Total_Phones FROM Mobile_Phone mp INNER JOIN Brand b ON mp.Brand_ID = b.Brand_ID GROUP BY b.Brand_Name;
+
+Retrieve the brand names and their average mobile phone prices.
+sql
+SELECT b.Brand_Name, AVG(mp.Price) AS Average_Price FROM Mobile_Phone mp INNER JOIN Brand b ON mp.Brand_ID = b.Brand_ID GROUP BY b.Brand_Name;
+
+Retrieve the brand names and their respective CEOs.
+sql
+SELECT Brand_Name, CEO FROM Brand;
+
+Retrieve the technology stacks with a display type of "OLED."
+sql
+SELECT * FROM Technology_Stack WHERE Display_Type = 'OLED';
+
+Retrieve the mobile phones with a battery capacity greater than 4000 mAh.
+sql
+SELECT * FROM Mobile_Phone WHERE Stack_ID IN (SELECT Stack_ID FROM Technology_Stack WHERE Battery_Capacity > 4000);
+
+Retrieve the features that are of type "Camera."
+sql
+SELECT * FROM Features WHERE Type = 'Camera';
+
+Retrieve the technology stacks with a resolution greater than Full HD.
+sql
+SELECT * FROM Technology_Stack WHERE Resolution > 'Full HD';
+
+Retrieve the mobile phones released before a certain date and ordered by price in descending order.
+sql
+SELECT * FROM Mobile_Phone WHERE Release_Date < 'YYYY-MM-DD' ORDER BY Price DESC;
+
+Retrieve the brand names and their respective headquarters located in the USA.
+sql
+SELECT Brand_Name, Headquarters FROM Brand WHERE Country = 'USA';
+
+Retrieve the mobile phones with a specific feature and ordered by release date.
+sql
+SELECT * FROM Mobile_Phone WHERE Phone_ID IN (SELECT Phone_ID FROM Mobile_Phone_Features WHERE Feature_ID = <feature_id>) ORDER BY Release_Date;
+
+Retrieve the brand names and their respective websites starting with "http://".
+sql
+SELECT Brand_Name, Website FROM Brand WHERE Website LIKE 'http://%';
+
+Retrieve the features with a specific keyword in their description.
+sql
+SELECT * FROM Features WHERE Description LIKE '%<keyword>%';
+
+Retrieve the mobile phones released between two specific dates.
+sql
+SELECT * FROM Mobile_Phone WHERE Release_Date BETWEEN 'YYYY-MM-DD' AND 'YYYY-MM-DD';
+
+Retrieve the technology stacks with a specific processor type.
+sql
+SELECT * FROM Technology_Stack WHERE Processor = '<processor_type>';
