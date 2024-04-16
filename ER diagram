@@ -1,0 +1,45 @@
+erDiagram
+    +-------------------+                 +-------------------+
+    |    Technology     |                 |       Brand       |
+    |      Stack        |                 +-------------------+
+    +-------------------+                 | Brand_ID (PK)     |
+    | Stack_ID (PK)     |                 | Brand_Name        |
+    | OS                |                 | Country           |
+    | Processor         |                 | Year_Established  |
+    | RAM               |                 | CEO               |
+    | Storage           |                 | Headquarters      |
+    | Display_Type      |                 | Website           |
+    | Resolution        |                 +-------------------+
+    | Camera_Resolution |
+    | Battery_Capacity  |
+    | Connectivity      |
+    +-------------------+                      |
+         |                                    |
+         | 1                                  |
+         |                                    |
+    +-------------------+                      |
+    |      Mobile       |                      |
+    |       Phone       |                      |
+    +-------------------+                      |
+    | Phone_ID (PK)     |                      |
+    | Brand_ID (FK)     |                      |
+    | Stack_ID (FK)     |                      |
+    | Model             |                      |
+    | Release_Date      |                      |
+    | Price             |                      |
+    +-------------------+                      |
+         |                                    |
+         | 1                                  |
+         |                                    |
+    +-------------------+                      |
+    |     Features      |                      |
+    +-------------------+                      |
+    | Feature_ID (PK)   |                      |
+    | Feature_Name      |                      |
+    | Description       |                      |
+    | Type              |                      |
+    +-------------------+                      |
+         |                                    |
+         | 1                                  |
+         |                                    |
+         +------------------------------------+
